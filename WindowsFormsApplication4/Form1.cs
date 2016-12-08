@@ -17,7 +17,7 @@ namespace WindowsFormsApplication4
             InitializeComponent();
         }
 
-        private static void WriteCsv(int second, int select)
+        private static void WriteCsv(int second, int select, string place)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace WindowsFormsApplication4
                 //         falseにすると，ファイルを新規作成する
                 var append = true;
                 // 出力用のファイルを開く
-                using (var sw = new System.IO.StreamWriter("C:\\Users\\Tsuka\\Documents\\Visual Studio 2013\\Projects\\WindowsFormsApplication4\\WindowsFormsApplication4\\test.csv", append))
+                using (var sw = new System.IO.StreamWriter(place + "\\test.csv", append))
                 {
                     if (select == 1)
                     {
@@ -73,32 +73,98 @@ namespace WindowsFormsApplication4
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //FolderBrowserDialogクラスのインスタンスを作成
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            //上部に表示する説明テキストを指定する
+            fbd.Description = "フォルダを指定してください。";
+            //ルートフォルダを指定する
+            //デフォルトでDesktop
+            fbd.RootFolder = Environment.SpecialFolder.Desktop;
+            //最初に選択するフォルダを指定する
+            //RootFolder以下にあるフォルダである必要がある
+            fbd.SelectedPath = @"C:\Windows";
+            //ユーザーが新しいフォルダを作成できるようにする
+            //デフォルトでTrue
+            fbd.ShowNewFolderButton = true;
+
+            //ダイアログを表示する
+            if (fbd.ShowDialog(this) == DialogResult.OK)
+            {
+                //選択されたフォルダを表示する
+                Console.WriteLine(fbd.SelectedPath);
+            }
+
             double sec = axWindowsMediaPlayer2.Ctlcontrols.currentPosition;
             int SEC = (int)sec;
             string car = SEC.ToString();
             this.label1.Text = car;
             string str = "movie1";
-            WriteCsv(SEC, 1);
+            WriteCsv(SEC, 1, fbd.SelectedPath);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //FolderBrowserDialogクラスのインスタンスを作成
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            //上部に表示する説明テキストを指定する
+            fbd.Description = "フォルダを指定してください。";
+            //ルートフォルダを指定する
+            //デフォルトでDesktop
+            fbd.RootFolder = Environment.SpecialFolder.Desktop;
+            //最初に選択するフォルダを指定する
+            //RootFolder以下にあるフォルダである必要がある
+            fbd.SelectedPath = @"C:\Windows";
+            //ユーザーが新しいフォルダを作成できるようにする
+            //デフォルトでTrue
+            fbd.ShowNewFolderButton = true;
+
+            //ダイアログを表示する
+            if (fbd.ShowDialog(this) == DialogResult.OK)
+            {
+                //選択されたフォルダを表示する
+                Console.WriteLine(fbd.SelectedPath);
+            }
+
             double sec = axWindowsMediaPlayer3.Ctlcontrols.currentPosition;
             int SEC = (int)sec;
             string car = SEC.ToString();
             this.label2.Text = car;
             string str = "movie2";
-            WriteCsv(SEC, 2);
+            WriteCsv(SEC, 2, fbd.SelectedPath);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //FolderBrowserDialogクラスのインスタンスを作成
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            //上部に表示する説明テキストを指定する
+            fbd.Description = "フォルダを指定してください。";
+            //ルートフォルダを指定する
+            //デフォルトでDesktop
+            fbd.RootFolder = Environment.SpecialFolder.Desktop;
+            //最初に選択するフォルダを指定する
+            //RootFolder以下にあるフォルダである必要がある
+            fbd.SelectedPath = @"C:\Windows";
+            //ユーザーが新しいフォルダを作成できるようにする
+            //デフォルトでTrue
+            fbd.ShowNewFolderButton = true;
+
+            //ダイアログを表示する
+            if (fbd.ShowDialog(this) == DialogResult.OK)
+            {
+                //選択されたフォルダを表示する
+                Console.WriteLine(fbd.SelectedPath);
+            }
+
             double sec = axWindowsMediaPlayer4.Ctlcontrols.currentPosition;
             int SEC = (int)sec;
             string car = SEC.ToString();
             this.label3.Text = car;
             string str = "movie3";
-            WriteCsv(SEC, 3);
+            WriteCsv(SEC, 3, fbd.SelectedPath);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -182,6 +248,21 @@ namespace WindowsFormsApplication4
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        private void folderBrowserDialog2_HelpRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        private void folderBrowserDialog3_HelpRequest(object sender, EventArgs e)
         {
 
         }
