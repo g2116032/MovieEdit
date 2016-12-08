@@ -12,6 +12,8 @@ namespace WindowsFormsApplication4
 {
     public partial class Form1 : Form
     {
+        int flag = 1;
+        string FilePath;
         public Form1()
         {
             InitializeComponent();
@@ -73,98 +75,128 @@ namespace WindowsFormsApplication4
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //FolderBrowserDialogクラスのインスタンスを作成
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-
-            //上部に表示する説明テキストを指定する
-            fbd.Description = "フォルダを指定してください。";
-            //ルートフォルダを指定する
-            //デフォルトでDesktop
-            fbd.RootFolder = Environment.SpecialFolder.Desktop;
-            //最初に選択するフォルダを指定する
-            //RootFolder以下にあるフォルダである必要がある
-            fbd.SelectedPath = @"C:\Windows";
-            //ユーザーが新しいフォルダを作成できるようにする
-            //デフォルトでTrue
-            fbd.ShowNewFolderButton = true;
-
-            //ダイアログを表示する
-            if (fbd.ShowDialog(this) == DialogResult.OK)
+            if (flag == 1)
             {
-                //選択されたフォルダを表示する
-                Console.WriteLine(fbd.SelectedPath);
-            }
+                //FolderBrowserDialogクラスのインスタンスを作成
+                FolderBrowserDialog fbd = new FolderBrowserDialog();
 
-            double sec = axWindowsMediaPlayer2.Ctlcontrols.currentPosition;
-            int SEC = (int)sec;
-            string car = SEC.ToString();
-            this.label1.Text = car;
-            string str = "movie1";
-            WriteCsv(SEC, 1, fbd.SelectedPath);
+                //上部に表示する説明テキストを指定する
+                fbd.Description = "フォルダを指定してください。";
+                //ルートフォルダを指定する
+                //デフォルトでDesktop
+                fbd.RootFolder = Environment.SpecialFolder.Desktop;
+                //最初に選択するフォルダを指定する
+                //RootFolder以下にあるフォルダである必要がある
+                fbd.SelectedPath = @"C:\Windows";
+                //ユーザーが新しいフォルダを作成できるようにする
+                //デフォルトでTrue
+                fbd.ShowNewFolderButton = true;
+
+                //ダイアログを表示する
+                if (fbd.ShowDialog(this) == DialogResult.OK)
+                {
+                    flag = 0;
+                }
+
+                double sec = axWindowsMediaPlayer2.Ctlcontrols.currentPosition;
+                int SEC = (int)sec;
+                string car = SEC.ToString();
+                this.label1.Text = car;
+                FilePath = fbd.SelectedPath;
+                WriteCsv(SEC, 1, FilePath);
+            }
+            else if (flag == 0)
+            {
+                double sec = axWindowsMediaPlayer2.Ctlcontrols.currentPosition;
+                int SEC = (int)sec;
+                string car = SEC.ToString();
+                this.label1.Text = car;
+                WriteCsv(SEC, 1, FilePath);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //FolderBrowserDialogクラスのインスタンスを作成
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-
-            //上部に表示する説明テキストを指定する
-            fbd.Description = "フォルダを指定してください。";
-            //ルートフォルダを指定する
-            //デフォルトでDesktop
-            fbd.RootFolder = Environment.SpecialFolder.Desktop;
-            //最初に選択するフォルダを指定する
-            //RootFolder以下にあるフォルダである必要がある
-            fbd.SelectedPath = @"C:\Windows";
-            //ユーザーが新しいフォルダを作成できるようにする
-            //デフォルトでTrue
-            fbd.ShowNewFolderButton = true;
-
-            //ダイアログを表示する
-            if (fbd.ShowDialog(this) == DialogResult.OK)
+            if (flag == 1)
             {
-                //選択されたフォルダを表示する
-                Console.WriteLine(fbd.SelectedPath);
-            }
+                //FolderBrowserDialogクラスのインスタンスを作成
+                FolderBrowserDialog fbd = new FolderBrowserDialog();
 
-            double sec = axWindowsMediaPlayer3.Ctlcontrols.currentPosition;
-            int SEC = (int)sec;
-            string car = SEC.ToString();
-            this.label2.Text = car;
-            string str = "movie2";
-            WriteCsv(SEC, 2, fbd.SelectedPath);
+                //上部に表示する説明テキストを指定する
+                fbd.Description = "フォルダを指定してください。";
+                //ルートフォルダを指定する
+                //デフォルトでDesktop
+                fbd.RootFolder = Environment.SpecialFolder.Desktop;
+                //最初に選択するフォルダを指定する
+                //RootFolder以下にあるフォルダである必要がある
+                fbd.SelectedPath = @"C:\Windows";
+                //ユーザーが新しいフォルダを作成できるようにする
+                //デフォルトでTrue
+                fbd.ShowNewFolderButton = true;
+
+                //ダイアログを表示する
+                if (fbd.ShowDialog(this) == DialogResult.OK)
+                {
+                    flag = 0;
+                }
+
+                double sec = axWindowsMediaPlayer3.Ctlcontrols.currentPosition;
+                int SEC = (int)sec;
+                string car = SEC.ToString();
+                this.label2.Text = car;
+                string str = "movie2";
+                WriteCsv(SEC, 2, fbd.SelectedPath);
+            }
+            else if (flag == 0)
+            {
+                double sec = axWindowsMediaPlayer3.Ctlcontrols.currentPosition;
+                int SEC = (int)sec;
+                string car = SEC.ToString();
+                this.label2.Text = car;
+                WriteCsv(SEC, 2, FilePath);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //FolderBrowserDialogクラスのインスタンスを作成
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-
-            //上部に表示する説明テキストを指定する
-            fbd.Description = "フォルダを指定してください。";
-            //ルートフォルダを指定する
-            //デフォルトでDesktop
-            fbd.RootFolder = Environment.SpecialFolder.Desktop;
-            //最初に選択するフォルダを指定する
-            //RootFolder以下にあるフォルダである必要がある
-            fbd.SelectedPath = @"C:\Windows";
-            //ユーザーが新しいフォルダを作成できるようにする
-            //デフォルトでTrue
-            fbd.ShowNewFolderButton = true;
-
-            //ダイアログを表示する
-            if (fbd.ShowDialog(this) == DialogResult.OK)
+            if (flag == 1)
             {
-                //選択されたフォルダを表示する
-                Console.WriteLine(fbd.SelectedPath);
-            }
+                //FolderBrowserDialogクラスのインスタンスを作成
+                FolderBrowserDialog fbd = new FolderBrowserDialog();
 
-            double sec = axWindowsMediaPlayer4.Ctlcontrols.currentPosition;
-            int SEC = (int)sec;
-            string car = SEC.ToString();
-            this.label3.Text = car;
-            string str = "movie3";
-            WriteCsv(SEC, 3, fbd.SelectedPath);
+                //上部に表示する説明テキストを指定する
+                fbd.Description = "フォルダを指定してください。";
+                //ルートフォルダを指定する
+                //デフォルトでDesktop
+                fbd.RootFolder = Environment.SpecialFolder.Desktop;
+                //最初に選択するフォルダを指定する
+                //RootFolder以下にあるフォルダである必要がある
+                fbd.SelectedPath = @"C:\Windows";
+                //ユーザーが新しいフォルダを作成できるようにする
+                //デフォルトでTrue
+                fbd.ShowNewFolderButton = true;
+
+                //ダイアログを表示する
+                if (fbd.ShowDialog(this) == DialogResult.OK)
+                {
+                    flag = 0;
+                }
+
+                double sec = axWindowsMediaPlayer4.Ctlcontrols.currentPosition;
+                int SEC = (int)sec;
+                string car = SEC.ToString();
+                this.label3.Text = car;
+                string str = "movie3";
+                WriteCsv(SEC, 3, fbd.SelectedPath);
+            }
+            else if (flag == 0)
+            {
+                double sec = axWindowsMediaPlayer4.Ctlcontrols.currentPosition;
+                int SEC = (int)sec;
+                string car = SEC.ToString();
+                this.label3.Text = car;
+                WriteCsv(SEC, 3, FilePath);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
